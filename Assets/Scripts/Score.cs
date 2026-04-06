@@ -42,6 +42,8 @@ public class Score : MonoBehaviour
         pitchCount++;
         Debug.Log("HIT! Score: " + score);
 
+        Audio.Instance.PlayBatCrack();
+
         FindObjectOfType<UI>().AnimateHit(quality);
 
         CheckGameOver();
@@ -55,6 +57,8 @@ public class Score : MonoBehaviour
         strikes++;
         pitchCount++;
         Debug.Log("MISS! Strikes: " + strikes);
+
+        Audio.Instance.PlaySwoosh();
 
         FindObjectOfType<UI>().AnimateMiss();
 

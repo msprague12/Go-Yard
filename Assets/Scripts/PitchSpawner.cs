@@ -13,6 +13,9 @@ public class PitchSpawner : MonoBehaviour
 
     void Update()
     {
+        // Don't throw any pitches until the game starts
+        if (!Score.Instance.gameActive) return;
+
         // Add the time since last frame to our timer
         timer += Time.deltaTime;
 
