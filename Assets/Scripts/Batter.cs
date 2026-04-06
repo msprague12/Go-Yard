@@ -11,19 +11,22 @@ public class Batter : MonoBehaviour
 
     void Update()
     {
+        // Only allow swinging if the game is still active
+        if (!Score.Instance.gameActive) return;
+
         // Check if player pressed space and the ball is in the strike zone
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             if (ballInZone && ballInHitZone != null)
             {
                 // Successful swing
-                Debug.Log("HIT!");
+                Score.Instance.RegisterHit();
                 Destroy(ballInHitZone);
             }
             else
             {
                 // Missed swing
-                Debug.Log("MISS!");
+                Score.Instance.RegisterMiss();
             }
         }
     }
