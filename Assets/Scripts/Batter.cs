@@ -50,8 +50,8 @@ public class Batter : MonoBehaviour
                 Baseball ball = ballInHitZone.GetComponent<Baseball>();
                 if (ball != null)
                     ball.Hit(horizontal, vertical);
-
-                Score.Instance.RegisterHit();
+                
+                Score.Instance.RegisterHit(quality);
             }
             else
             {

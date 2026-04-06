@@ -34,13 +34,15 @@ public class Score : MonoBehaviour
     }
 
     // Called by Batter script when player gets a hit
-    public void RegisterHit()
+    public void RegisterHit(float quality)
     {
         if (!gameActive) return;
 
         score += 100;
         pitchCount++;
         Debug.Log("HIT! Score: " + score);
+
+        FindObjectOfType<UI>().AnimateHit(quality);
 
         CheckGameOver();
     }
@@ -53,6 +55,8 @@ public class Score : MonoBehaviour
         strikes++;
         pitchCount++;
         Debug.Log("MISS! Strikes: " + strikes);
+
+        FindObjectOfType<UI>().AnimateMiss();
 
         CheckGameOver();
     }
