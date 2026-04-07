@@ -42,7 +42,11 @@ public class Score : MonoBehaviour
         pitchCount++;
         Debug.Log("HIT! Score: " + score);
 
-        Audio.Instance.PlayBatCrack();
+        // Play perfect cheer if quality is high enough, otherwise regular bat crack
+        if (quality >= 0.85f)
+            Audio.Instance.PlayPerfectHit();
+        else
+            Audio.Instance.PlayBatCrack();
 
         FindObjectOfType<UI>().AnimateHit(quality);
 
@@ -59,7 +63,7 @@ public class Score : MonoBehaviour
         Debug.Log("MISS! Strikes: " + strikes);
 
         Audio.Instance.PlaySwoosh();
-
+        Audio.Instance.PlayStrike();
         FindObjectOfType<UI>().AnimateMiss();
 
         CheckGameOver();
@@ -71,7 +75,8 @@ public class Score : MonoBehaviour
         if (strikes >= maxStrikes || pitchCount >= maxPitches)
         {
             gameActive = false;
-             // Show the game over panel with final score
+            Audio.Instance.PlayGameOver();
+            // Show the game over panel with final score
             finalScoreText.text = "Final Score: " + score;
             gameOverPanel.SetActive(true);
             Debug.Log("GAME OVER! Final Score: " + score);

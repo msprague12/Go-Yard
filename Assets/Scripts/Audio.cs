@@ -9,6 +9,12 @@ public class Audio : MonoBehaviour
     public AudioClip batCrack;
     // The swoosh sound for a swing and miss
     public AudioClip swoosh;
+    // Crowd roar for a perfect hit
+    public AudioClip perfectHitCheer;
+    // Crowd disappointment for a strike
+    public AudioClip strikeSound;
+    // Game over sound
+    public AudioClip gameOverSound;
 
     [Header("Background")]
     // Looping crowd noise played throughout the game
@@ -41,9 +47,30 @@ public class Audio : MonoBehaviour
         sfxSource.PlayOneShot(batCrack);
     }
 
+    // Called when the player gets a perfect hit
+    public void PlayPerfectHit()
+    {
+        sfxSource.PlayOneShot(batCrack);
+        sfxSource.PlayOneShot(perfectHitCheer);
+    }
+
     // Call this when the player misses
     public void PlaySwoosh()
     {
         sfxSource.PlayOneShot(swoosh);
+    }
+
+    // Called when a strike is registered
+    public void PlayStrike()
+    {
+        sfxSource.PlayOneShot(strikeSound);
+    }
+
+    // Called when the game ends
+    public void PlayGameOver()
+    {
+        // Stop the background crowd noise
+        backgroundSource.Stop();
+        sfxSource.PlayOneShot(gameOverSound);
     }
 }
