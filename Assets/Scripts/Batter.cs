@@ -63,14 +63,11 @@ public class Batter : MonoBehaviour
     // Called when something enters the hit zone trigger
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Something entered the zone: " + other.gameObject.name);
         if (other.gameObject.name == "Baseball(Clone)")
         {
             ballInZone = true;
             ballInHitZone = other.gameObject;
             timeInZone = 0f; // Reset timer when ball enters
-            Debug.Log("Ball is in the zone!");
-
         }
     }
 

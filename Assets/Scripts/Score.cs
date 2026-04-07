@@ -40,7 +40,6 @@ public class Score : MonoBehaviour
 
         score += 100;
         pitchCount++;
-        Debug.Log("HIT! Score: " + score);
 
         // Play perfect cheer if quality is high enough, otherwise regular bat crack
         if (quality >= 0.85f)
@@ -60,7 +59,6 @@ public class Score : MonoBehaviour
 
         strikes++;
         pitchCount++;
-        Debug.Log("MISS! Strikes: " + strikes);
 
         Audio.Instance.PlaySwoosh();
         Audio.Instance.PlayStrike();
@@ -79,7 +77,6 @@ public class Score : MonoBehaviour
             // Show the game over panel with final score
             finalScoreText.text = "Final Score: " + score;
             gameOverPanel.SetActive(true);
-            Debug.Log("GAME OVER! Final Score: " + score);
         }
     }
 
